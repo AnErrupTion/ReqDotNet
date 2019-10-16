@@ -1,8 +1,7 @@
 # ReqDotNet
 Easy and fast HTTP library for .NET Framework.
 
-.NET Framework version required : **4.5**
-Current library version : 1.0.0
+.NET Framework version required : **4.5** - Current library version : 1.0.0
 
 # Changelog
 - Fast requests because of using HttpClient
