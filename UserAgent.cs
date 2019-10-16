@@ -1,19 +1,16 @@
-﻿using System;
+using System;
 
 namespace ReqDotNet
 {
     public class UserAgent
     {
-        private static string[] UserAgents = { "Mozilla/5.0 ({0}; WOW64; Trident/{1}; rv:{2}) like Gecko", "Mozilla/5.0 ({0}; {1}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{2} Safari/537.36 OPR/{3}", "Mozilla/5.0 ({0}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36", "Mozilla/5.0 ({0}; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0", "Mozilla/5.0 ({0}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18362", "Mozilla/5.0 ({0}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Brave Chrome/76.0.3809.132 Safari/537.36", "Mozilla/5.0 ({0}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.34 Safari/537.36 Edg/78.0.276.11", "Mozilla/5.0 (Linux; U; {0}; SM-J710F Build/M1AJQ; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.73 Mobile Safari/537.36 OPR/44.1.2254.143214", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)", "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)", "DuckDuckBot/1.0; (+http://duckduckgo.com/duckduckbot.html)", "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)", "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)", "Sogou Pic Spider/3.0( http://www.sogou.com/docs/help/webmasters.htm#07)", "Sogou head spider/3.0( http://www.sogou.com/docs/help/webmasters.htm#07)", "Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)", "Sogou Orion spider/3.0( http://www.sogou.com/docs/help/webmasters.htm#07)", "Sogou-Test-Spider/4.0 (compatible; MSIE 5.5; Windows 98)", "Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.5 (like Gecko) (Exabot-Thumbnails)", "Mozilla/5.0 (compatible; Exabot/3.0; +http://www.exabot.com/go/robot)", "facebookexternalhit/{0} (+http://www.facebook.com/externalhit_uatext.php)", "ia_archiver (+http://www.alexa.com/site/help/webmasters; crawler@alexa.com)" };
+        private static string[] UserAgents = { "Mozilla/5.0 ({0}; WOW64; Trident/{1}; rv:{2}) like Gecko", "Mozilla/5.0 ({0}; {1}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{2} Safari/537.36 OPR/{3}", "Mozilla/5.0 ({0}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36", "Mozilla/5.0 ({0}; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0", "Mozilla/5.0 ({0}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18362", "Mozilla/5.0 ({0}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Brave Chrome/76.0.3809.132 Safari/537.36", "Mozilla/5.0 ({0}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.34 Safari/537.36 Edg/78.0.276.11", "Mozilla/5.0 (Linux; U; {0}; SM-J710F Build/M1AJQ; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.73 Mobile Safari/537.36 OPR/44.1.2254.143214", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)", "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)", "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)", "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)", "Sogou-Test-Spider/4.0 (compatible; MSIE 5.5; Windows 98)", "Mozilla/5.0 (compatible; Konqueror/3.5; Linux) KHTML/3.5.5 (like Gecko) (Exabot-Thumbnails)", "Mozilla/5.0 (compatible; Exabot/3.0; +http://www.exabot.com/go/robot)", "facebookexternalhit/{0} (+http://www.facebook.com/externalhit_uatext.php)", "ia_archiver (+http://www.alexa.com/site/help/webmasters; crawler@alexa.com)" };
 
         public static string InternetExplorer()
         {
             string windowsVersion = RandomWindowsVersion();
-
-            string version = string.Empty;
             string trident = string.Empty;
-
-            #region Генерация случайной версии
+            string version = string.Empty;
 
             if (windowsVersion.Contains("NT 5.1"))
             {
@@ -31,22 +28,15 @@ namespace ReqDotNet
                 trident = "7.0";
             }
 
-            #endregion
-
-            return string.Format(
-                UserAgents[0],
-                windowsVersion, trident, version);
+            return string.Format(UserAgents[0], windowsVersion, trident, version);
         }
 
         public static string Opera()
         {
             string windowsVersion = RandomWindowsVersion();
-
             string chromeVersion = string.Empty;
             string operaVersion = string.Empty;
             string systemType = string.Empty;
-
-            #region Генерация случайной версии
 
             if (windowsVersion.Contains("NT 5.1") || windowsVersion.Contains("NT 6.0"))
             {
@@ -71,128 +61,36 @@ namespace ReqDotNet
                 }
             }
 
-            #endregion
-
-            return string.Format(
-                UserAgents[1],
-                windowsVersion, systemType, chromeVersion, operaVersion);
+            return string.Format(UserAgents[1], windowsVersion, systemType, chromeVersion, operaVersion);
         }
 
-        public static string Chrome()
-        {
-            string windowsVersion = RandomWindowsVersion();
+        public static string Chrome() { return string.Format(UserAgents[2], RandomWindowsVersion()); }
 
-            return string.Format(
-                UserAgents[2],
-                windowsVersion);
-        }
+        public static string Firefox() { return string.Format(UserAgents[3], RandomWindowsVersion()); }
 
-        public static string Firefox()
-        {
-            string windowsVersion = RandomWindowsVersion();
+        public static string Edge() { return string.Format(UserAgents[4], RandomWindowsVersion()); }
 
-            return string.Format(
-                UserAgents[3],
-                windowsVersion);
-        }
+        public static string Brave() { return string.Format(UserAgents[5], RandomWindowsVersion()); }
 
-        public static string Edge()
-        {
-            string windowsVersion = RandomWindowsVersion();
+        public static string ChromiumEdge() { return string.Format(UserAgents[6], RandomWindowsVersion()); }
 
-            return string.Format(
-                UserAgents[4],
-                windowsVersion);
-        }
+        public static string OperaMini() { return string.Format(UserAgents[7], RandomAndroidVersion()); }
 
-        public static string Brave()
-        {
-            string windowsVersion = RandomWindowsVersion();
+        public static string Googlebot() { return string.Format(UserAgents[8]); }
 
-            return string.Format(UserAgents[4],
-                windowsVersion);
-        }
+        public static string Bingbot() { return string.Format(UserAgents[9]); }
 
-        public static string ChromiumEdge()
-        {
-            string windowsVersion = RandomWindowsVersion();
+        public static string Yahoobot() { return string.Format(UserAgents[10]); }
 
-            return string.Format(UserAgents[5],
-                windowsVersion);
-        }
+        public static string Baiduspider() { return string.Format(UserAgents[11]); }
 
-        public static string OperaMini()
-        {
-            string androidVersion = RandomAndroidVersion();
+        public static string Yandexbot() { return string.Format(UserAgents[12]); }
 
-            return string.Format(UserAgents[6],
-                androidVersion);
-        }
+        public static string SogouTestspider() { return string.Format(UserAgents[13]); }
 
-        public static string Googlebot()
-        {
-            return string.Format(UserAgents[7]);
-        }
+        public static string Konqueror() { return string.Format(UserAgents[14]); }
 
-        public static string Bingbot()
-        {
-            return string.Format(UserAgents[8]);
-        }
-
-        public static string Yahoobot()
-        {
-            return string.Format(UserAgents[9]);
-        }
-
-        public static string Duckduckbot()
-        {
-            return string.Format(UserAgents[10]);
-        }
-
-        public static string Baiduspider()
-        {
-            return string.Format(UserAgents[11]);
-        }
-
-        public static string Yandexbot()
-        {
-            return string.Format(UserAgents[12]);
-        }
-
-        public static string SogouPicspider()
-        {
-            return string.Format(UserAgents[13]);
-        }
-
-        public static string Sogouheadspider()
-        {
-            return string.Format(UserAgents[14]);
-        }
-
-        public static string Sogouwebspider()
-        {
-            return string.Format(UserAgents[15]);
-        }
-
-        public static string SogouOrionspider()
-        {
-            return string.Format(UserAgents[16]);
-        }
-
-        public static string SogouTestspider()
-        {
-            return string.Format(UserAgents[17]);
-        }
-
-        public static string Konqueror()
-        {
-            return string.Format(UserAgents[18]);
-        }
-
-        public static string Exabot()
-        {
-            return string.Format(UserAgents[19]);
-        }
+        public static string Exabot() { return string.Format(UserAgents[15]); }
 
         public static string FacebookExtHit()
         {
@@ -208,23 +106,14 @@ namespace ReqDotNet
                     break;
             }
 
-            return string.Format(UserAgents[20], version);
+            return string.Format(UserAgents[16], version);
         }
 
-        public static string Alexabot()
-        {
-            return string.Format(UserAgents[21]);
-        }
-
-        public static string Random()
-        {
-            return UserAgents[new Random().Next(UserAgents.Length)];
-        }
+        public static string Alexabot() { return string.Format(UserAgents[17]); }
 
         private static string RandomWindowsVersion()
         {
             string windowsVersion = "Windows NT ";
-
             switch (new Random().Next(6))
             {
                 case 0:
@@ -258,7 +147,6 @@ namespace ReqDotNet
         private static string RandomAndroidVersion()
         {
             string androidVersion = "Android ";
-
             switch (new Random().Next(28))
             {
                 case 0:
