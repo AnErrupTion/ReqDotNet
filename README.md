@@ -1,7 +1,29 @@
 # ReqDotNet
 Easy and fast HTTP library for .NET Framework.
 
-.NET Framework version required : **4.5** - Current library version : **1.0.0**
+- .NET Framework version required : **4.5**
+- Current library version : **1.0.0**
+
+# Examples
+````
+Requests r = new Requests()
+{
+  Method = HttpMethod.Get,
+  Address = "https://www.nitrxgen.net/md5db/" + hash,
+  UserAgent = UserAgent.Random(),
+  Timeout = 5000
+};
+
+string response = await r.SendRequestToString();
+if (!string.IsNullOrEmpty(response))
+{
+// md5 is correct
+}
+else
+{
+// md5 isn't correct
+}
+````
 
 # Changelog
 - Fast requests because of using HttpClient
