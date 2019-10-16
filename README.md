@@ -6,6 +6,7 @@ Easy and fast HTTP library for .NET Framework.
 # Changelog
 - Fast requests because of using HttpClient
 - Support proxies (BETA)
+- Support cookies
 - All methods available (GET, POST, PATCH, etc...)
 - Useful User-Agents (Googlebot, Bingbot or even normal Chrome or Opera Mini!)
 
