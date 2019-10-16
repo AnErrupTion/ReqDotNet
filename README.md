@@ -18,7 +18,7 @@ Requests r = new Requests()
 {
   Method = HttpMethod.Get,
   Address = "https://www.nitrxgen.net/md5db/" + hash,
-  UserAgent = UserAgent.Random(),
+  UserAgent = UserAgent.Chrome(),
   Timeout = 5000
 };
 
