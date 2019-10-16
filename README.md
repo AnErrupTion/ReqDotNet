@@ -17,7 +17,7 @@ Easy and fast HTTP library for .NET Framework.
 Requests r = new Requests()
 {
   Method = HttpMethod.Get,
-  Address = "https://www.nitrxgen.net/md5db/" + hash,
+  Address = "https://www.nitrxgen.net/md5db/hash",
   UserAgent = UserAgent.Chrome(),
   Timeout = 5000
 };
