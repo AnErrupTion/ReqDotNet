@@ -2,7 +2,15 @@
 Easy and fast HTTP library for .NET Framework.
 
 - .NET Framework version required : **4.5**
-- Current library version : **1.0.0**
+- Current library version : **1.1.0**
+
+# Changelog
+- Fixed a problem with the UserAgent class, the code is also cleaner to see.
+- Some User-Agents should now be faster to load due to removing useless things.
+- Added function CookieStorage.Contains() (it's pretty much self-explanatory).
+- Requests.SendRequest() function now converts string address to a Uri (client.BaseAddress).
+- Removed UserAgent.Random() function, it was glitched.
+- Removed all non-working Bots User-Agents (Duckduckbot, SogouPicspider, Sogouheadspider, Sogouwebspider and SogouOrionspider).
 
 # Example
 ````
@@ -24,13 +32,6 @@ else
   // md5 isn't correct
 }
 ````
-
-# Changelog
-- Fast requests because of using HttpClient
-- Support proxies (BETA)
-- Support cookies
-- All methods available (GET, POST, PATCH, etc...)
-- Useful User-Agents (Googlebot, Bingbot or even normal Chrome or Opera Mini!)
 
 If you encounter some bugs with the library, please report them in the project's issues so I can fix them ASAP!
 
