@@ -8,29 +8,40 @@ namespace ReqDotNet
     public class Requests
     {
         public HttpMethod Method;
+        public Encoding ContentEncoding;
+
         public string Address;
         public string UserAgent;
         public string PostData;
         public string ContentType;
-        public Encoding ContentEncoding;
-        public bool UseCookies;
         public string Cookies;
-        public bool UseProxies;
         public string Proxy;
+
+        public bool UseCookies;
+        public bool UseProxies;
+
         public int Timeout;
 
         public async Task<HttpResponseMessage> SendRequest()
         {
             HttpClientHandler handler = new HttpClientHandler { UseCookies = false, UseProxy = UseProxies };
-            if (UseProxies) handler.Proxy = ProxyHandler.ToWebProxy(Proxy);
+            if (handler.UseProxy)
+            {
+                handler.Proxy = ProxyHandler.ToWebProxy(Proxy);
+                handler.PreAuthenticate = true;
+                handler.UseDefaultCredentials = true;
+            }
 
-            HttpClient client = new HttpClient(handler);
-            client.BaseAddress = new Uri(Address);
+            HttpClient client = new HttpClient(handler)
+            {
+                BaseAddress = new Uri(Address),
+                Timeout = TimeSpan.FromMilliseconds(Timeout)
+            };
+
             client.DefaultRequestHeaders.UserAgent.ParseAdd(UserAgent);
-            client.Timeout = TimeSpan.FromMilliseconds(Timeout);
 
             HttpRequestMessage req = new HttpRequestMessage(Method, client.BaseAddress);
-            if (Method == HttpMethod.Post) req.Content = new StringContent(PostData, ContentEncoding, ContentType);
+            if (Method.Equals(HttpMethod.Post)) req.Content = new StringContent(PostData, ContentEncoding, ContentType);
             if (UseCookies) req.Headers.Add("Cookie", Cookies);
 
             return await client.SendAsync(req);
