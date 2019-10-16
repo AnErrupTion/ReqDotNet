@@ -4,7 +4,7 @@ Easy and fast HTTP library for .NET Framework.
 - .NET Framework version required : **4.5**
 - Current library version : **1.0.0**
 
-# Examples
+# Example
 ````
 Requests r = new Requests()
 {
