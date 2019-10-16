@@ -2,15 +2,13 @@
 Easy and fast HTTP library for .NET Framework.
 
 - .NET Framework version required : **4.5**
-- Current library version : **1.1.0**
+- Current library version : **1.2.0**
 
 # Changelog
-- Fixed a problem with the UserAgent class, the code is also cleaner to see.
-- Some User-Agents should now be faster to load due to removing useless things.
-- Added function CookieStorage.Contains() (it's pretty much self-explanatory).
-- Requests.SendRequest() function now converts string address to a Uri (client.BaseAddress).
-- Removed UserAgent.Random() function, it was glitched.
-- Removed all non-working Bots User-Agents (Duckduckbot, SogouPicspider, Sogouheadspider, Sogouwebspider and SogouOrionspider).
+- Added the StatusCode class so you don't need to search over the internet to find the http status code you need.
+- Added the WebsiteUtils class with the functions GetPageSource() and TestWebsite(), they are pretty much self-explanatory.
+- Optimized the code in the Requests.SendRequest() function, it's cleaner.
+- Improved the proxy support.
 
 # Example
 ````
